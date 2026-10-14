@@ -1,157 +1,144 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Art Magic Studio</title>
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- DaisyUI components -->
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.0/dist/full.min.css" rel="stylesheet">
-  <!-- HTMX for AJAX -->
-  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
-  <!-- Google Fonts: Cormorant Garamond & Nunito -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    /* Custom fonts for DaisyUI/Tailwind */
-    body { font-family: 'Nunito', sans-serif; }
-    h1, h2, h3, h4, h5, h6, .framer-text-serif { font-family: 'Cormorant Garamond', serif; }
-    /* Cream background */
-    .bg-cream { background-color: #FCF8F1; }
-    /* Warm accent color from Framer */
-    .accent-warm { background-color: #62F10893; /* placeholder - actual hex from Framer */ }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art Magic Studio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root { --bg-cream:#FCF8F1; --text-dark:#2D2420; --accent:#62A8D0; --card-green:#DDE8DF; --card-rose:#F2D6C7; --card-tan:#EEE4D2; }
+  body { font-family:'Nunito',sans-serif; background-color:#FCF8F1; color:#2D2420; }
+  h1,h2,h3,h4,h5,h6 { font-family:'Cormorant Garamond',serif; letter-spacing:-0.02em; }
+  .font-cormorant { font-family:'Cormorant Garamond',serif; }
+</style>
 </head>
-<body class="bg-base-100 text-base-content bg-cream min-h-screen flex flex-col">
-  <!-- Header -->
-  <header class="flex items-center justify-between px-6 py-4 bg-base-200/50 backdrop-blur-sm">
-    <div class="text-2xl font-extrabold text-base-content/80">Art Magic Studio</div>
-    <nav class="flex space-x-4">
-      <a href="#collection" class="hover:text-base-content/70 transition-colors">The collection</a>
-      <a href="#personalize" class="hover:text-base-content/70 transition-colors">Make it yours</a>
+<body class="min-h-screen flex flex-col">
+  <header class="flex items-center justify-between px-8 py-5 bg-[#FCF8F1]/80 backdrop-blur sticky top-0 z-50">
+    <a href="#" class="text-[28px] font-bold text-[#2D2420] font-cormorant tracking-tight">Art Magic Studio</a>
+    <nav class="flex gap-6 text-[14px] font-semibold tracking-wide">
+      <a href="#collection" class="hover:opacity-70 transition">The collection</a>
+      <a href="#personalize" class="hover:opacity-70 transition">Make it yours</a>
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero min-h-[60vh] bg-gradient-to-br from-rose-50 to-amber-50 flex items-center justify-center px-6">
-    <div class="text-center space-y-4 max-w-2xl">
-      <p class="text-xs tracking-widest text-base-content/60 uppercase">LITTLE GIFTS. BIG FEELINGS.</p>
-      <h1 class="text-5xl font-extrabold text-base-content/90">A little magic in every mug.</h1>
-      <p class="text-base lg:text-xl text-base-content/70">
-        Their name. Your love. A favorite new ritual. Thoughtfully designed mugs that turn everyday moments into something personal.
-      </p>
-      <a href="#collection" class="btn btn-primary btn-lg bg-accent-warm hover:bg-accent-warm/90">
-        Explore the collection
-      </a>
-    </div>
-  </section>
-
-  <!-- Collection Grid -->
-  <section id="collection" class="py-16 bg-base-100">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-12">
-        <p class="text-xs tracking-widest text-base-content/60 uppercase">A GIFT FOR EVERY KIND OF LOVE</p>
-        <h2 class="text-3xl font-bold text-base-content/90">Find their kind of magic</h2>
-      </div>
-      <div class="grid md:grid-cols-3 gap-8" hx-get="cards.html" hx-trigger="load" hx-target="this"></div>
-    </div>
-  </section>
-
-  <!-- Personalization Section -->
-  <section id="personalize" class="py-16 bg-base-50">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center space-y-6 mb-12">
-        <div class="flex justify-center items-center space-x-2">
-          <span class="w-3 h-3 bg-accent-warm rounded-full"></span>
-          <p class="text-xs tracking-widest text-base-content/60 uppercase">ONE NAME. ENDLESS MEANING.</p>
-          <span class="w-3 h-3 bg-accent-warm rounded-full"></span>
+  <main class="flex-1">
+    <!-- Welcome / Hero -->
+    <section class="relative min-h-[80vh] flex items-center px-8 py-16">
+      <div class="max-w-5xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-[11px] tracking-[0.2em] uppercase text-[#2D2420]/60 mb-4">LITTLE GIFTS. BIG FEELINGS.</p>
+          <h1 class="text-[64px] leading-[0.95] font-semibold text-[#2D2420] mb-6">A little magic in every mug.</h1>
+          <p class="text-[17px] leading-relaxed text-[#2D2420]/70 mb-8 max-w-md">Their name. Your love. A favorite new ritual. Thoughtfully designed mugs that turn everyday moments into something personal.</p>
+          <a href="#collection" class="inline-block px-8 py-3 rounded-full bg-[#2D2420] text-[#FCF8F1] text-[14px] font-semibold tracking-wide hover:opacity-90 transition">Explore the collection</a>
+          <p class="mt-6 text-[11px] tracking-[0.15em] text-[#2D2420]/40">Designed with care · Made to be cherished</p>
         </div>
-        <h2 class="text-3xl font-bold text-base-content/90">Go on, make it yours.</h2>
-        <p class="text-base lg:text-xl text-base-content/70">
-          Type a name and watch your mug come to life. Tatar, English, Cyrillic — every name belongs here.
-        </p>
+        <div class="relative">
+          <div class="aspect-[3/4] rounded-[24px] overflow-hidden shadow-[0_24px_60px_-12px_rgba(45,36,32,0.15)]">
+            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&h=800&q=80" alt="Gift mug" class="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-700" loading="eager">
+          </div>
+        </div>
       </div>
+    </section>
 
-      <!-- Live Preview & Controls -->
-      <div class="grid md:grid-cols-[1fr_1fr] gap-8 items-start">
-        <!-- Live Preview -->
-        <div class="space-y-6">
-          <p class="text-xs tracking-widest text-base-content/60 uppercase">A little preview of your everyday magic</p>
-          <div class="relative aspect-[3/4] w-full max-w-xl mx-auto rounded-2xl border border-base-200/50 overflow-hidden shadow-lg">
-            <!-- Mug SVG placeholder -->
-            <div class="relative h-full w-full bg-base-200/10 flex items-center justify-center">
-              <svg class="w-12 h-12 text-base-content/30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 6a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M2 10h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M6 8a4 4 0 00-4 4v2a2 2 0 002 2h12a2 2 0 002-2v-2a4 4 0 00-4-4H6z" fill="currentColor" fill-opacity="0.05"/>
-              </svg>
-              <div class="absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-2 bg-base-200/20 w-10 h-0.5 rounded-full"></div>
+    <!-- Collection -->
+    <section id="collection" class="py-20 px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-14">
+          <p class="text-[11px] tracking-[0.25em] uppercase text-[#2D2420]/60 mb-3">A GIFT FOR EVERY KIND OF LOVE</p>
+          <h2 class="text-[42px] font-semibold text-[#2D2420]">Find their kind of magic</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Card 1 -->
+          <article class="bg-white rounded-[20px] shadow-[0_8px_24px_0px_rgba(68,60,52,0.07)] overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+            <div class="h-[320px] bg-[#DDE8DF] flex items-center justify-center relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=450&h=600&q=80" alt="Mug" class="w-[220px] h-[300px] object-cover rounded-[16px] shadow-md">
             </div>
-          </div>
-          <div class="mt-4">
-            <p class="text-sm text-base-content/60">Live design preview · Up to 18 characters</p>
-          </div>
+            <div class="p-6">
+              <h3 class="text-[26px] font-semibold text-[#2D2420] mb-2 font-cormorant">Mugs with Tatar names</h3>
+              <p class="text-[15px] text-[#2D2420]/70 mb-4">A little piece of home, in every sip.</p>
+              <div class="flex items-center justify-between">
+                <span class="text-[18px] font-bold text-[#2D2420]">From $24</span>
+                <a href="#personalize" class="text-[14px] font-semibold text-[#2D2420]/50 hover:text-[#2D2420] underline underline-offset-4">Personalize this mug</a>
+              </div>
+            </div>
+          </article>
+          <!-- Card 2 -->
+          <article class="bg-white rounded-[20px] shadow-[0_8px_24px_0px_rgba(68,60,52,0.07)] overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+            <div class="h-[320px] bg-[#F2D6C7] flex items-center justify-center relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=450&h=600&q=80" alt="Birthday mug" class="w-[220px] h-[300px] object-cover rounded-[16px] shadow-md">
+            </div>
+            <div class="p-6">
+              <h3 class="text-[26px] font-semibold text-[#2D2420] mb-2 font-cormorant">Birthday mugs</h3>
+              <p class="text-[15px] text-[#2D2420]/70 mb-4">Another year, another reason to smile.</p>
+              <div class="flex items-center justify-between">
+                <span class="text-[18px] font-bold text-[#2D2420]">From $24</span>
+                <a href="#personalize" class="text-[14px] font-semibold text-[#2D2420]/50 hover:text-[#2D2420] underline underline-offset-4">Personalize this mug</a>
+              </div>
+            </div>
+          </article>
+          <!-- Card 3 -->
+          <article class="bg-white rounded-[20px] shadow-[0_8px_24px_0px_rgba(68,60,52,0.07)] overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+            <div class="h-[320px] bg-[#EEE4D2] flex items-center justify-center relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1520975916090-3107576deb5d?w=450&h=600&q=80" alt="Grandmother mug" class="w-[220px] h-[300px] object-cover rounded-[16px] shadow-md">
+            </div>
+            <div class="p-6">
+              <h3 class="text-[26px] font-semibold text-[#2D2420] mb-2 font-cormorant">Mugs for grandmothers</h3>
+              <p class="text-[15px] text-[#2D2420]/70 mb-4">For the hands that have held us most.</p>
+              <div class="flex items-center justify-between">
+                <span class="text-[18px] font-bold text-[#2D2420]">From $26</span>
+                <a href="#personalize" class="text-[14px] font-semibold text-[#2D2420]/50 hover:text-[#2D2420] underline underline-offset-4">Personalize this mug</a>
+              </div>
+            </div>
+          </article>
         </div>
+      </div>
+    </section>
 
-        <!-- Personalization Controls -->
-        <div class="space-y-4">
-          <label class="block space-y-2">
-            <span class="text-base font-medium text-base-content/90">Their name</span>
+    <!-- Make It Yours -->
+    <section id="personalize" class="py-20 px-8 bg-[#F9F6F1]">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+        <div>
+          <p class="text-[11px] tracking-[0.2em] uppercase text-[#2D2420]/50 mb-3">ONE NAME. ENDLESS MEANING.</p>
+          <h2 class="text-[42px] font-semibold text-[#2D2420] mb-4">Go on, make it yours.</h2>
+          <p class="text-[16px] text-[#2D2420]/70 mb-6">Type a name and watch your mug come to life. Tatar, English, Cyrillic — every name belongs here.</p>
+
+          <label class="block mb-4">
+            <span class="text-[15px] font-medium text-[#2D2420] mb-2 block">Their name</span>
             <div class="relative">
-              <input type="text" id="nameInput" placeholder="Enter a name…" class="w-full px-4 py-3 border border-base-200/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-warm focus:border-transparent transition-all duration-200 bg-base-100/50" value="Amelia">
-              <button type="button" id="clearBtn" class="absolute right-2 top-1/2 -translate-y-1/2 text-base-content/40 hover:text-base-content/60 transition-colors p-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-              </button>
+              <input id="nameInput" type="text" value="Amelia" placeholder="Enter a name…" class="w-full px-4 py-3 rounded-[30px] border border-[#2D2420]/10 bg-white text-[15px] focus:outline-none focus:ring-2 focus:ring-[#2D2420]/10 transition shadow-sm">
             </div>
-          </div>
+          </label>
+          <p class="text-[11px] tracking-[0.15em] text-[#2D2420]/40 mb-6">Live design preview · Up to 18 characters</p>
 
-          <button id="personalizeBtn" class="w-full btn btn-primary btn-lg bg-accent-warm hover:bg-accent-warm/90">
-            Personalize this mug
-          </button>
+          <button id="personalizeBtn" class="w-full px-8 py-3 rounded-[30px] bg-[#2D2420] text-[#FCF8F1] text-[14px] font-semibold hover:opacity-90 transition shadow-md">Personalize this mug</button>
+        </div>
+        <div class="relative">
+          <div class="aspect-[3/4] rounded-[24px] bg-[#F2EFE9] flex items-center justify-center shadow-[0_18px_40px_-12px_rgba(45,36,32,0.15)] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&h=700&q=80" alt="Personalized preview" class="w-full h-full object-cover opacity-90">
+          </div>
+          <p class="text-center mt-4 text-[12px] text-[#2D2420]/40 tracking-[0.15em]">A little preview of your everyday magic</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="mt-auto py-12 bg-base-200/50">
-    <div class="max-w-4xl mx-auto px-6 text-center space-y-4">
-      <h2 class="text-2xl font-bold text-base-content/90">Not just a mug. A little reminder of love.</h2>
-      <p class="text-base lg:text-xl text-base-content/70">
-        From the first sketch to the final name, we believe the smallest gifts can hold the most meaning.
-      </p>
-      <p class="text-xs tracking-widest text-base-content/60">© 2026 Art Magic Studio · Made personal, with love.</p>
-    </div>
-  </footer>
+    <!-- Closing -->
+    <section class="py-16 px-8 text-center">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-[36px] font-semibold text-[#2D2420] mb-4 leading-tight">Not just a mug. A little reminder of love.</h2>
+        <p class="text-[16px] text-[#2D2420]/60 mb-6">From the first sketch to the final name, we believe the smallest gifts can hold the most meaning.</p>
+        <p class="text-[11px] text-[#2D2420]/30 tracking-[0.15em]">© 2026 Art Magic Studio · Made personal, with love.</p>
+      </div>
+    </section>
+  </main>
 
   <script>
-    // Simple live preview logic
-    const nameInput = document.getElementById('nameInput');
-    const clearBtn = document.getElementById('clearBtn');
-    const personalizeBtn = document.getElementById('personalizeBtn');
-
-    // Update preview on input (demo - would normally update SVG/text)
-    nameInput.addEventListener('input', () => {
-      console.log('Name:', nameInput.value);
-      // In real implementation: update SVG text or canvas preview
+    document.getElementById('nameInput').addEventListener('input', () => {
+      console.log('Name typed:', document.getElementById('nameInput').value);
     });
-
-    clearBtn.addEventListener('click', () => {
-      nameInput.value = '';
-      nameInput.focus();
-    });
-
-    personalizeBtn.addEventListener('click', () => {
-      if (nameInput.value.trim()) {
-        alert(`Your mug with name "${nameInput.value}" is being personalized!`);
-        // Here you would call your API via HTMX or fetch
-        // Example: htmx.ajax('POST', '/api/personalize', { target: '#personalize' });
-      } else {
-        nameInput.focus();
-      }
+    document.getElementById('personalizeBtn').addEventListener('click', () => {
+      const val = document.getElementById('nameInput').value.trim();
+      if (val) alert('Personalizing mug for "' + val + '"...');
     });
   </script>
 </body>
