@@ -1,0 +1,5 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Art Magic Studio</title><script src="https://cdn.tailwindcss.com"></script><link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.0/dist/full.min.css" rel="stylesheet"/><script src="https://unpkg.com/htmx.org@1.9.12"></script></head><body class="bg-base-100 text-base-content">
+<div class="hero min-h-[60vh] bg-gradient-to-br from-rose-100 to-amber-100"><div class="hero-content text-center"><h1 class="text-6xl font-extrabold">Art Magic Studio</h1><p class="py-6 text-xl">Подарочные кружки с именами на разных языках</p><a href="#catalog" class="btn btn-primary btn-lg">Каталог</a></div></div>
+<section id="catalog" class="max-w-6xl mx-auto px-6 py-16"><h2 class="text-3xl font-bold mb-8">Татарские имена, ДР, для бабушки</h2><div class="grid md:grid-cols-3 gap-8" hx-get="cards.html" hx-trigger="load" hx-target="this"></div></section>
+</body></html>
